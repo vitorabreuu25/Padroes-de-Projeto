@@ -1,0 +1,111 @@
+```
+class Main {
+  public static void main(String[] args) 
+    {
+        try {
+          // Creating a component tree
+          Component component = new CompositeAccount();
+  
+          // Adding all accounts of a customer to component
+          component.add(new DepositAccount("DA001", 100));
+          component.add(new DepositAccount("DA002", 150));
+
+          Component subComponent = new CompositeAccount();
+          component.add(subComponent);
+          subComponent.add(new SavingsAccount("SA001", 200));
+  
+          // getting composite balance for the customer
+          float totalBalance = component.getBalance();
+          System.out.println("Total Balance : " + totalBalance);
+        }
+        catch (Exception e) {
+          e.printStackTrace();
+        }
+    }
+}
+
+public abstract class Component 
+{
+    public abstract float getBalance();
+ 
+    public void add(Component g) throws Exception {
+        throw new Exception();
+    }
+ 
+    public void remove(Component g) throws Exception {
+        throw new Exception();
+    }
+ 
+    public Component getChild(int i) throws Exception {
+        throw new Exception();
+    }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CompositeAccount extends Component 
+{
+    protected List<Component> list = new ArrayList<>(); 
+    
+    public void add(Component g) {
+        list.add(g);
+    }
+ 
+    public void remove(Component g) {
+        list.remove(g);
+    }
+ 
+    public Component getChild(int i) {
+        return (Component) list.get(i);
+    }
+    
+    public float getBalance() {
+        float totalBalance = 0;
+        for (Component f : list) {
+            totalBalance = totalBalance + f.getBalance();
+        }
+        return totalBalance;
+    }
+}
+
+public class DepositAccount extends Component 
+{
+    private String accountNo;
+    private float accountBalance;
+     
+    public DepositAccount(String accountNo, float accountBalance) {
+        super();
+        this.accountNo = accountNo;
+        this.accountBalance = accountBalance;
+    }
+ 
+    public String getAccountNo() {
+        return accountNo;
+    }
+ 
+    public float getBalance() {
+        return accountBalance;
+    }
+}
+
+public class SavingsAccount extends Component 
+{
+    private String accountNo;
+    private float accountBalance;
+     
+    public SavingsAccount(String accountNo, float accountBalance) {
+        super();
+        this.accountNo = accountNo;
+        this.accountBalance = accountBalance;
+    }
+ 
+    public String getAccountNo() {
+        return accountNo;
+    }
+ 
+    public float getBalance() {
+        return accountBalance;
+    }
+}
+```
