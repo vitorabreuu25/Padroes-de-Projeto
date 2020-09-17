@@ -60,8 +60,8 @@ Pode ser usado para implementar as partes invariantes de um algoritmo uma só ve
 
 ### Estrutura e Participantes
 
-
+Fornece uma estrutura fixa, de um algoritmo, esta parte fixa deve estar presente na superclasse, sendo obrigatório uma classeAbstrata que possa conter um método concreto, pois em uma interface só é possível conter métodos abstratos que definem um comportamento.
 
 ### Codigo de Exemplo
 
-Pasta .exemploCTemplateMethod
+Pasta .exemploTemplateMethod
