@@ -15,9 +15,11 @@ conexões: cada banco de dados permite apenas uma única conexão ativa (ou seja
 
 ### Aplicabilidade
 
+Ele é aplicado quando você possuí uma classe que precisa controlar o que será instanciado. Como o Singleton permitie apenas uma instância durante a aplicaçao, você consegue monitorar e controlar este comportamento.
 
 ### Estrutura e Participantes
 
+Há apenas dois participantes: Singleton e Client (que utiliza o Singleton).
 
 ### Codigo de Exemplo
 
