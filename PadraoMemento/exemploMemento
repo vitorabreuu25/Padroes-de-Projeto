@@ -1,0 +1,43 @@
+
+import java.util.List;
+import java.util.ArrayList;
+class Originator {
+private String estado;
+public void set(String state) {
+System.out.println("Originador: Mudando estado para " + state);
+this.estado = state;
+}
+public Memento salvarMemento() {
+System.out.println("Originador: Salvando o Memento.");
+return new Memento(this.state);
+}
+public void restaurarMemento(Memento memento) {
+this.state = memento.getSavedState();
+System.out.println("Originador: Estado apos restaurar o Memento: " +
+state);
+}
+public static class Memento {
+private final String state;
+public Memento(String stateToSave) {
+state = stateToSave;
+}
+private String getEstadoSalvo() {
+return state;
+}
+}
+}
+class Armazenador{
+public static void main(String[] args) {
+List<Originador.Memento> estadosSalvos = new
+ArrayList<Originador.Memento>();
+Originador originador = new Originador();
+originador.set("Estado1");
+originador.set("Estado2");
+estadosSalvos.add(originador.salvarMemento());
+originador.set("Estado3");
+// Podemos ter multiplos mementos e escolher qual queremos restaurar.
+savedStates.add(originator.saveToMemento());
+originador.set("Estado4");
+originador.restaurarMemento(estadosSalvos.get(1));
+}
+}
